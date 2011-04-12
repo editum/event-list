@@ -11,13 +11,13 @@ License: GPL
 
 */
 
-require_once("EventListEvent.php");
-require_once("EventListHelper.php");
+require_once("lib/EventListEvent.php");
+require_once("lib/EventListHelper.php");
 
 define('EVENTLIST_PLUGIN_URL', plugins_url('',plugin_basename(__FILE__)).'/');
 define('SIMPLECAL_ROUTE', "termine");
 
-wp_enqueue_style("event-list.css", EVENTLIST_PLUGIN_URL.'/event-list.css');
+wp_enqueue_style("event-list.css", EVENTLIST_PLUGIN_URL.'/public/event-list.css');
 
 add_action("admin_menu", "admin_menu_injector");
 add_filter("the_content","content_injector");
@@ -27,14 +27,14 @@ register_sidebar_widget("Event List - Upcoming Events","widget_injector");
 function content_injector($content) {
 
 	if(is_page(SIMPLECAL_ROUTE)) 
-		include("templates/event-list.php");
+		include("templates/list.php");
 	else
 		return $content;
 }
 
 function admin_menu_injector() {
 
-	add_menu_page("Termine", "Termine", 'edit_themes', 'eventlist_manager', 'admin_menu_events_render', EVENTLIST_PLUGIN_URL.'/images/calendar-16.png', 21); 
+	add_menu_page("Termine", "Termine", 'edit_themes', 'eventlist_manager', 'admin_menu_events_render', EVENTLIST_PLUGIN_URL.'/public/images/calendar-16.png', 21); 
 	add_submenu_page('eventlist_manager', "Neuer Termin", "Neuer Termin", 'edit_themes', 'eventlist_new_event', 'admin_menu_new_event_render');
 
 	function admin_menu_events_render() {
@@ -50,10 +50,10 @@ function admin_menu_injector() {
 				else
 					$error = "Der Termin konnte nicht gel&ouml;scht werden.";
 
-				include("templates/event-manager.php");
+				include("templates/admin/manager.php");
 					
 			} else
-				include("templates/event-manager.php");
+				include("templates/admin/manager.php");
 		
 		} else if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -102,18 +102,18 @@ function admin_menu_injector() {
 							$error = "Der Termin konnte nicht angelegt werden.";	
 					}
 										
-					include("templates/event-manager.php");
+					include("templates/admin/manager.php");
 					
 			} else {
 				$error = "Es muss mindestens ein Titel und ein Beginn-Datum angegeben werden.";
-				include("templates/new-event.php");
+				include("templates/admin/new.php");
 			}
 		}
 	}
 	
 	function admin_menu_new_event_render() {
 		
-		include("templates/new-event.php");
+		include("templates/admin/new.php");
 	}
 }
 
