@@ -1,6 +1,14 @@
 <?php
 /*
+
 Plugin Name: Event List
+Plugin URI: http://www.editum.de
+Description: A very simple event list for Wordpress
+Version: 0.4
+Author: Oliver Michel
+Author URI: http://www.editum.de
+License: GPL
+
 */
 
 require_once("EventListEvent.php");
