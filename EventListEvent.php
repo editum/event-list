@@ -1,6 +1,6 @@
 <?php
 
-class SimpleCalEvent {
+class EventListEvent {
 	
 	public static $validKeys = array('id', 'caption', 'venue', 'begin_date', 'begin_time', 
 		'end_date', 'end_time', 'description', 'post');
@@ -105,7 +105,7 @@ class SimpleCalEvent {
 		
 		if(mysql_num_rows($events))
 			while($event = mysql_fetch_assoc($events))
-		 		$returnVector[] = new SimpleCalEvent($event);
+		 		$returnVector[] = new EventListEvent($event);
 			
 		return $returnVector;
 	}
@@ -122,7 +122,7 @@ class SimpleCalEvent {
 		
 		if(mysql_num_rows($events))
 			while($event = mysql_fetch_assoc($events))
-				$returnVector[] = new SimpleCalEvent($event);
+				$returnVector[] = new EventListEvent($event);
 			
 		return $returnVector;
 	}
@@ -130,7 +130,7 @@ class SimpleCalEvent {
 	public static function with_id($id) {
 		
 		if($res = mysql_query("SELECT * FROM wp_simplecal_events WHERE id = '".$id."' LIMIT 1"))
-			return new SimpleCalEvent(mysql_fetch_assoc($res));
+			return new EventListEvent(mysql_fetch_assoc($res));
 		else
 			return NULL;
 	}

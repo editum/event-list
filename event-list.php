@@ -1,20 +1,20 @@
 <?php
 /*
-Plugin Name: simpleCal
+Plugin Name: Event List
 */
 
-require_once("SimpleCalEvent.php");
-require_once("SimpleCalHelper.php");
+require_once("EventListEvent.php");
+require_once("EventListHelper.php");
 
-define('SIMPLECAL_PLUGIN_URL', plugins_url('',plugin_basename(__FILE__)).'/');
+define('EVENTLIST_PLUGIN_URL', plugins_url('',plugin_basename(__FILE__)).'/');
 define('SIMPLECAL_ROUTE', "termine");
 
-wp_enqueue_style("simple-cal.css", SIMPLECAL_PLUGIN_URL.'/simple-cal.css');
+wp_enqueue_style("event-list.css", EVENTLIST_PLUGIN_URL.'/event-list.css');
 
 add_action("admin_menu", "admin_menu_injector");
 add_filter("the_content","content_injector");
 
-register_sidebar_widget("SimpleCal Upcoming Events","widget_injector");
+register_sidebar_widget("Event List - Upcoming Events","widget_injector");
 
 function content_injector($content) {
 
@@ -26,8 +26,8 @@ function content_injector($content) {
 
 function admin_menu_injector() {
 
-	add_menu_page("Termine", "Termine", 'edit_themes', 'simplecal_manager', 'admin_menu_events_render', SIMPLECAL_PLUGIN_URL.'/images/calendar-16.png', 21); 
-	add_submenu_page('simplecal_manager', "Neuer Termin", "Neuer Termin", 'edit_themes', 'simplecal_new_event', 'admin_menu_new_event_render');
+	add_menu_page("Termine", "Termine", 'edit_themes', 'eventlist_manager', 'admin_menu_events_render', EVENTLIST_PLUGIN_URL.'/images/calendar-16.png', 21); 
+	add_submenu_page('eventlist_manager', "Neuer Termin", "Neuer Termin", 'edit_themes', 'eventlist_new_event', 'admin_menu_new_event_render');
 
 	function admin_menu_events_render() {
 		
@@ -37,7 +37,7 @@ function admin_menu_injector() {
 				include("templates/edit-event.php");
 			elseif($_GET["action"] == "delete") {
 				
-				if(SimpleCalEvent::with_id($_GET['id'])->delete())
+				if(EventListEvent::with_id($_GET['id'])->delete())
 					$message = "Der Termin wurde erfolgreich gel&ouml;scht.";
 				else
 					$error = "Der Termin konnte nicht gel&ouml;scht werden.";
@@ -52,7 +52,7 @@ function admin_menu_injector() {
 			if($_POST['event']['title'] != "" && $_POST['event']['begin_date']['d'] != ""
 				&& $_POST['event']['begin_date']['m'] != "" && $_POST['event']['begin_date']['y'] != "") {
 					
-					$event = new SimpleCalEvent();
+					$event = new EventListEvent();
 					$event->caption = $_POST['event']['title'];
 
 					if($_POST['event']['begin_date']['d'] != "" && $_POST['event']['begin_date']['m'] != "") {

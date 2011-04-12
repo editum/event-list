@@ -2,10 +2,10 @@
 	
 <?php 
 
-$events = SimpleCalEvent::upcoming_and_running();
+$events = EventListEvent::upcoming_and_running();
 
 if(count($events)) {
-	foreach(SimpleCalEvent::upcoming_and_running() as $event) { ?>
+	foreach(EventListEvent::upcoming_and_running() as $event) { ?>
 		<li class="sc-event">
 			<?php if($event->post) { ?>
 				<div class="caption"><?php echo $event->caption; ?>

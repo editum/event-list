@@ -2,7 +2,7 @@
 <!--
 function confirmDelete(id) {
 	if (confirm("Sind Sie sicher, dass Sie diesen Termin löschen möchten?"))
-		window.location = "?page=simplecal_manager&action=delete&id="+id;
+		window.location = "?page=eventlist_manager&action=delete&id="+id;
 }
 //-->
 </script>
@@ -18,13 +18,13 @@ function confirmDelete(id) {
 	?>
 	<ul class="subsubsub">
 		<?php if($_GET['view'] == "all") { ?>
-			<li class="all"><a href="?page=simplecal_manager&amp;view=all" class="current">Alle<!--> <span class="count">(14)</span>--></a> |</li>
+			<li class="all"><a href="?page=eventlist_manager&amp;view=all" class="current">Alle<!--> <span class="count">(14)</span>--></a> |</li>
 		<?php } else { ?>
-			<li class="all"><a href="?page=simplecal_manager&amp;view=all">Alle<!--> <span class="count">(14)</span>--></a> |</li>
+			<li class="all"><a href="?page=eventlist_manager&amp;view=all">Alle<!--> <span class="count">(14)</span>--></a> |</li>
 		<?php } if(!$_GET['view'] || $_GET['view'] == "upcoming") { ?>
-			<li class="upcoming"><a href="?page=simplecal_manager&amp;view=upcoming" class="current">Kommende</a></li>
+			<li class="upcoming"><a href="?page=eventlist_manager&amp;view=upcoming" class="current">Kommende</a></li>
 		<?php } else { ?>
-			<li class="upcoming"><a href="?page=simplecal_manager&amp;view=upcoming">Kommende</a></li>
+			<li class="upcoming"><a href="?page=eventlist_manager&amp;view=upcoming">Kommende</a></li>
 		<?php } ?>
 	</ul>
 
@@ -40,19 +40,19 @@ function confirmDelete(id) {
 		
 		<tbody>
 			<?php
-			$events = $_GET['view'] == "all" ? SimpleCalEvent::all() : SimpleCalEvent::upcoming_and_running();
+			$events = $_GET['view'] == "all" ? EventListEvent::all() : EventListEvent::upcoming_and_running();
 			
 			if(count($events)) {
 				foreach($events as $event) { ?>
 					<tr class="alternate">
 						<td><!-- reserved for checkboxes --></td>
 						<td>
-							<strong><a class="row-title" href="?page=simplecal_manager&amp;action=edit&amp;id=<?php echo $event->id; ?>">
+							<strong><a class="row-title" href="?page=eventlist_manager&amp;action=edit&amp;id=<?php echo $event->id; ?>">
 								<?php echo $event->caption; ?>
 							</a></strong>
 							<br/>
 							<div class="row-actions">
-								<span class="edit"><a href="?page=simplecal_manager&amp;action=edit&amp;id=<?php echo $event->id; ?>" title="Dieses Element bearbeiten">Bearbeiten</a> | </span><span class="trash"><a class="submitdelete" title="Element in den Papierkorb verschieben" href="#" onclick="confirmDelete(<?php echo $event->id; ?>)">L&ouml;schen</a></span>
+								<span class="edit"><a href="?page=eventlist_manager&amp;action=edit&amp;id=<?php echo $event->id; ?>" title="Dieses Element bearbeiten">Bearbeiten</a> | </span><span class="trash"><a class="submitdelete" title="Element in den Papierkorb verschieben" href="#" onclick="confirmDelete(<?php echo $event->id; ?>)">L&ouml;schen</a></span>
 							</div>
 						</td>
 						<td><?php echo $event->venue; ?></td>

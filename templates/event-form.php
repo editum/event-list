@@ -1,4 +1,4 @@
-	<form id="simplecal-neweventform" method="post" action="?page=simplecal_manager">
+	<form id="simplecal-neweventform" method="post" action="?page=eventlist_manager">
 		<?php if($event) { ?>
 			<input type="hidden" name="event[id]" value="<?php echo $event->id; ?>">
 		<?php } ?>
@@ -62,15 +62,15 @@
 							<p><strong>Beginn</strong></p>
 							<label class="screen-reader-text" for="begin_day">Tag</label> 
 							<select name="event[begin_date][d]" id="begin_day">
-								<?php echo SimpleCalHelper::num_options(1,31,".",$begin_date[2]); ?>
+								<?php echo EventListHelper::num_options(1,31,".",$begin_date[2]); ?>
 							</select>
 							<label class="screen-reader-text" for="begin_month">Monat</label> 
 							<select name="event[begin_date][m]" id="begin_month">
-								<?php echo SimpleCalHelper::month_options($begin_date[1]); ?>
+								<?php echo EventListHelper::month_options($begin_date[1]); ?>
 							</select>
 							<label class="screen-reader-text" for="begin_year">Jahr</label> 
 							<select name="event[begin_date][y]" id="begin_year">
-								<?php echo SimpleCalHelper::num_options(intval(date(Y)),intval(date(Y))+10,NULL,$begin_date[0]); ?>
+								<?php echo EventListHelper::num_options(intval(date(Y)),intval(date(Y))+10,NULL,$begin_date[0]); ?>
 							</select>
 							&ndash;
 							
@@ -79,13 +79,13 @@
 							<label class="screen-reader-text" for="begin_hours">Stunde</label> 
 							<select name="event[begin_time][h]" id="begin_hours">
 								<option value="">-</option>
-								<?php echo SimpleCalHelper::num_options(0,24,NULL,$begin_time[0]); ?>
+								<?php echo EventListHelper::num_options(0,24,NULL,$begin_time[0]); ?>
 							</select>
 							&#58;
 							<label class="screen-reader-text" for="begin_minutes">Minuten</label> 
 							<select name="event[begin_time][m]" id="begin_minutes">
 								<option value="">-</option>
-								<?php echo SimpleCalHelper::num_options(0,60,NULL,$begin_time[1]); ?>
+								<?php echo EventListHelper::num_options(0,60,NULL,$begin_time[1]); ?>
 							</select>
 
 							<?php $end_date = $event && $event->end_date ? explode("-",$event->end_date) : NULL; ?>
@@ -94,17 +94,17 @@
 							<label class="screen-reader-text" for="end_day">Tag</label> 
 							<select name="event[end_date][d]" id="end_day">
 								<option value="">-</option>
-								<?php echo SimpleCalHelper::num_options(1,31,".",$end_date[2]); ?>
+								<?php echo EventListHelper::num_options(1,31,".",$end_date[2]); ?>
 							</select>
 							<label class="screen-reader-text" for="end_month">Monat</label> 
 							<select name="event[end_date][m]" id="end_month">
 								<option value="">-</option>
-								<?php echo SimpleCalHelper::month_options($end_date[1]); ?>
+								<?php echo EventListHelper::month_options($end_date[1]); ?>
 							</select>
 							<label class="screen-reader-text" for="end_year">Jahr</label> 
 							<select name="event[end_date][y]" id="end_year">
 								<option value="">-</option>
-								<?php echo SimpleCalHelper::num_options(intval(date(Y)),intval(date(Y))+10,NULL,$end_date[0]); ?>
+								<?php echo EventListHelper::num_options(intval(date(Y)),intval(date(Y))+10,NULL,$end_date[0]); ?>
 							</select>
 							&ndash;
 							
@@ -113,13 +113,13 @@
 							<label class="screen-reader-text" for="end_hours">Stunden</label> 
 							<select name="event[end_time][h]" id="end_hours">
 								<option value="">-</option>
-								<?php echo SimpleCalHelper::num_options(0,24,NULL,$end_time[0]); ?>
+								<?php echo EventListHelper::num_options(0,24,NULL,$end_time[0]); ?>
 							</select>
 							&#58;
 							<label class="screen-reader-text" for="end_minutes">Minuten</label> 
 							<select name="event[end_time][m]" id="end_minutes">
 								<option value="">-</option>
-								<?php echo SimpleCalHelper::num_options(0,60,NULL,$end_time[1]); ?>
+								<?php echo EventListHelper::num_options(0,60,NULL,$end_time[1]); ?>
 							</select>
 							
 							<p><strong>Ort</strong></p>

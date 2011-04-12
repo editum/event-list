@@ -1,7 +1,7 @@
 <li id="simplecal-3" class="widget widget_simplecal">
 	<h2 class="widgettitle">Termine</h2>
 		<ul class="widget-events">
-			<?php foreach(SimpleCalEvent::upcoming_and_running(3) as $event) { ?>
+			<?php foreach(EventListEvent::upcoming_and_running(3) as $event) { ?>
 				<li class="widget-event">
 					<?php
 						if($event->post) 

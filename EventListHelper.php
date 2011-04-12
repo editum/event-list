@@ -1,6 +1,6 @@
 <?php
 
-class SimpleCalHelper {
+class EventListHelper {
 	
 	public static function month_options($selected = NULL) {
 

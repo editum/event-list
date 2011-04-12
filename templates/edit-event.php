@@ -1,5 +1,5 @@
 <?php
-	$event = SimpleCalEvent::with_id($_GET['id']);
+	$event = EventListEvent::with_id($_GET['id']);
 ?>
 
 <div class="wrap">
