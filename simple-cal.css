@@ -1,0 +1,12 @@
+div#icon-simplecal-page { background:url('images/calendar-32.png') no-repeat center; }
+
+ul.sc-eventlist { list-style-type: none; padding: 0px; }
+ul.sc-eventlist li.sc-event { margin-bottom: 13px; }
+ul.sc-eventlist li.sc-event .caption { font-size: 18px; }
+ul.sc-eventlist li.sc-event .time { color: #666; }
+ul.sc-eventlist li.sc-event .page-link { font-size: 13px; }
+
+form#simplecal-neweventform input[type="text"] { width: 450px; }
+form#simplecal-neweventform textarea { width: 450px; height: 80px; }
+
+table.widefat tbody td.no-events { padding: 15px; text-align: center; }
