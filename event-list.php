@@ -42,7 +42,7 @@ function admin_menu_injector() {
 		if($_SERVER["REQUEST_METHOD"] == "GET") {
 			
 			if($_GET["action"] == "edit")
-				include("templates/admin/edit-event.php");
+				include("templates/admin/edit.php");
 			elseif($_GET["action"] == "delete") {
 				
 				if(EventListEvent::with_id($_GET['id'])->delete())
