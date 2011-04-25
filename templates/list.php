@@ -1,15 +1,21 @@
-<ul class="eventlist">
-	
+<ul class="eventlist">	
 <?php 
+$months = array("JAN", "FEB", "M&Auml;R", "APR", "MAI", "JUN", "JUL", "AUG", "SEP", "OKT", "NOV", "DEZ");
 
 $events = EventListEvent::upcoming_and_running();
 
 if(count($events)) {
-	foreach(EventListEvent::upcoming_and_running() as $event) { ?>
+	
+	foreach(EventListEvent::upcoming_and_running() as $event) {
+		
+		list($y, $m, $d) = explode('-', $event->begin_date);
+		if(intval($m) == $lastm) $newm = false;
+		else { $newm = true; $lastm = intval($m); }	
+	?>
 		<li>
-			<div class="event newmonth">
+			<div class="<?php echo $newm ? 'event newmonth' : 'event'; ?>">
 				<div class="month">
-					AUG<span class="year">2011</span>
+					<?php echo $months[intval($m)-1]; ?><span class="year"><?php echo $y; ?></span>
 				</div>
 				<div class="content">
 					<?php if($event->post) { ?>

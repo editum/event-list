@@ -8,8 +8,8 @@ table.widefat tbody td.no-events { padding: 15px; text-align: center; }
 /* Front End */
 ul.eventlist { list-style-type: none; padding: 0px; }
 ul.eventlist .event { margin-bottom: 13px; }
-ul.eventlist .event .month { float: left;  background: yellow;}
-ul.eventlist .event.newmonth .month { /* visibility: hidden; */ }
+ul.eventlist .event .month { float: left;  background: yellow; visibility: hidden;}
+ul.eventlist .event.newmonth .month { visibility: visible; }
 
 
 ul.eventlist .event .content { background: blue; margin-left: 55px;}
