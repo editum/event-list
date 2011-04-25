@@ -15,7 +15,7 @@ if(count($events)) {
 		<li>
 			<div class="<?php echo $newm ? 'event newmonth' : 'event'; ?>">
 				<div class="month">
-					<?php echo $months[intval($m)-1]; ?><span class="year"><?php echo $y; ?></span>
+					<?php echo $months[intval($m)-1]; ?>
 				</div>
 				<div class="content">
 					<?php if($event->post) { ?>
