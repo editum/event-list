@@ -1,5 +1,5 @@
 <li id="simplecal-3" class="widget widget_simplecal">
-	<h2 class="widgettitle">Termine</h2>
+	<h2 class="widgettitle">Termine <a href="<?php echo SIMPLECAL_ROUTE; ?>" class="eventlist-widgettitle-more"> &raquo; alle Termine</a></h2>
 		<ul class="widget-events">
 			<?php foreach(EventListEvent::upcoming_and_running(3) as $event) { ?>
 				<li class="widget-event">

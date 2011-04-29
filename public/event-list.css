@@ -23,3 +23,5 @@ ul.eventlist .event .caption { font-size: 18px; }
 ul.eventlist .event .time { color: #666; }
 ul.eventlist .event .page-link { font-size: 13px; }
 ul.eventlist li.noevents { }
+
+a.eventlist-widgettitle-more { font-size: 11px; }
